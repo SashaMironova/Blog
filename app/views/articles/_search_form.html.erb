@@ -1,0 +1,13 @@
+<div id="searchForm" class="row">
+	<%= form_with(url: search_for_articles_path, method: :get, remote: true) do |f| %>
+	<div class="field">
+		<%= f.label :title %>
+		<%= f.text_field :title, class: "w-100" %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Искать!" %>
+	</div>
+	<% end %>
+</div>
+
+

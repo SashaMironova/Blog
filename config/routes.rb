@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-	root "home#index"
-  resources :comments
-  resources :articles
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  	resources :users
+    root to: "home#index"
+    resources :comments
+    resources :articles do
+    	collection do
+    		get "search", to: "articles#search"
+    		get "search_for", to: "articles#search_for"
+    	end
+    end
+    get 'search' => 'articles#search'
+
 end

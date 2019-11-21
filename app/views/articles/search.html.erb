@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_with(url: search_for_articles_path, method: :get) do |form| %>
+
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<div id="search_results"></div>
+
+<%= link_to 'Back', articles_path %>

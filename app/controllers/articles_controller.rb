@@ -1,10 +1,12 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
+  include Pagy::Backend
+
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @pagy, @records = pagy(Article.all, items: 3)
   end
 
   # GET /articles/1
@@ -59,6 +61,21 @@ class ArticlesController < ApplicationController
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    
+  end
+
+  def search_for
+    @articles = Article.where(title: params[:title])
+#byebug
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def search_results
   end
 
   private
